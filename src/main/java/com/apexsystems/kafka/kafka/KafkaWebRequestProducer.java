@@ -16,19 +16,6 @@ public class KafkaWebRequestProducer {
     private static final Logger log = LoggerFactory.getLogger(KafkaWebRequestProducer.class);
     private final KafkaProducer<String, String> sender;
 
-
-    public KafkaWebRequestProducer(){
-        Map<String, Object> properties = new HashMap<>();
-        properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-        properties.put(ProducerConfig.CLIENT_ID_CONFIG, "sample-producer");
-        properties.put(ProducerConfig.ACKS_CONFIG, "all");
-        properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-        properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-
-
-        sender = new KafkaProducer<>(properties);
-    }
-
     public KafkaWebRequestProducer(ProducerProperties props) {
         sender = new KafkaProducer<>(props);
     }
